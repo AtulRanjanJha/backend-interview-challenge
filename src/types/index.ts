@@ -3,12 +3,12 @@ export interface Task {
   title: string;
   description?: string;
   completed: boolean;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
   is_deleted: boolean;
   sync_status?: 'pending' | 'synced' | 'error';
   server_id?: string;
-  last_synced_at?: Date;
+  last_synced_at?: string;
 }
 
 export interface SyncQueueItem {
@@ -16,7 +16,7 @@ export interface SyncQueueItem {
   task_id: string;
   operation: 'create' | 'update' | 'delete';
   data: Partial<Task>;
-  created_at: Date;
+  created_at: string;
   retry_count: number;
   error_message?: string;
 }
@@ -32,7 +32,7 @@ export interface SyncError {
   task_id: string;
   operation: string;
   error: string;
-  timestamp: Date;
+  timestamp: string;
 }
 
 export interface ConflictResolution {
@@ -42,7 +42,7 @@ export interface ConflictResolution {
 
 export interface BatchSyncRequest {
   items: SyncQueueItem[];
-  client_timestamp: Date;
+  client_timestamp: string;
 }
 
 export interface BatchSyncResponse {
